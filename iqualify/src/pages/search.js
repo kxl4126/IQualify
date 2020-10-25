@@ -100,7 +100,7 @@ export default class search extends Component {
             <Form.Control type="email" placeholder="Enter max hourly salary" />
           </Form.Group>
 
-          <Button variant="primary" onClick={this.onSubmit}>
+          <Button variant="primary" onClick={this.onSubmit} disabled={this.state.highestSalary == 0? true : false}>
             Submit
           </Button>
         </Form>

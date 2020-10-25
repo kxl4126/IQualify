@@ -15,7 +15,7 @@ export default class home extends Component {
           <div className="home-sections">
             <img src={scooter} alt="oidf" class="scooter"></img>
             <div className="entry-button">
-              <a href="#" class="button instagram">
+              <a href="/search" class="button instagram">
                 <span className="gradient"></span>See how much you could save
               </a>
             </div>

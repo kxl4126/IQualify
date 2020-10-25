@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import mail from "../assets/mail.png";
-import axios from 'axios'
+import axios from "axios";
 
 export default class result extends Component {
   state = {
     loading: true,
+    benefits: 0,
   };
   static propTypes = {
     amount: PropTypes.number.isRequired,
@@ -26,19 +27,24 @@ export default class result extends Component {
 
     const params = new URLSearchParams(window.location.search);
     const eligible = params.get("eligible");
-    const state = params.get("state");
+    const state = params.get("userState");
     const salary = params.get("salary");
     this.setState(
       {
         eligible: eligible == "yes" ? true : false,
-        state: state,
-        salary, salary
+        state,
+        salary,
+        benefits:
+          state == "Texas"
+            ? ((salary * 40 * 13) / 25)
+                .toFixed(2)
+                .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+            : ((salary * 40 * 12) / 26)
+                .toFixed(2)
+                .replace(/\d(?=(\d{3})+\.)/g, "$&,"),
       },
       () => {
-        axios
-          .post("/server?", {
-            
-          })
+        axios.post("/server?", {});
       }
     );
   }
@@ -63,12 +69,12 @@ export default class result extends Component {
     );
   }
   render() {
-    const {state, salary, eligible, loading} = this.state;
+    const { state, salary, eligible, loading, benefits } = this.state;
 
     if (!loading) {
       return (
         <div className="result-box">
-          {!eligible? (
+          {!eligible ? (
             <Fragment>
               <div className="result-text">
                 <h1 style={{ color: "red" }}>$0</h1>
@@ -83,7 +89,7 @@ export default class result extends Component {
           ) : (
             <Fragment>
               <div className="result-text confetti">
-                <h1>$500</h1>
+                <h1>${benefits}</h1>
                 {this.displayConfetti()}
               </div>
               <div class="entry-button">
@@ -95,7 +101,7 @@ export default class result extends Component {
                 </a>
               </div>
               <div className="covid-text">
-                You are eligible to receive up to ${} from governmental
+                You are eligible to receive up to ${benefits} from governmental
                 aid. <br></br> Follow the button above to see how you can claim
                 the money.
               </div>
