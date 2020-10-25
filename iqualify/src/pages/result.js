@@ -90,6 +90,9 @@ export default class result extends Component {
             <Fragment>
               <div className="result-text confetti">
                 <h1>${benefits}</h1>
+                <span>
+                  <div style={{ height: "100%" }}>/wk</div>
+                </span>
                 {this.displayConfetti()}
               </div>
               <div class="entry-button">
@@ -101,9 +104,9 @@ export default class result extends Component {
                 </a>
               </div>
               <div className="covid-text">
-                You are eligible to receive up to ${benefits} from governmental
-                aid. <br></br> Follow the button above to see how you can claim
-                the money.
+                You are eligible to receive up to ${benefits}/wk from
+                governmental aid. <br></br> Follow the button above to see how
+                you can claim the money.
               </div>
               {/* <img src={mail} alt="oidf" class="mail"></img> */}
             </Fragment>
