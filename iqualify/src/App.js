@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+import "./App2.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
@@ -9,11 +10,10 @@ import home from "./pages/home";
 import search from "./pages/search";
 import result from "./pages/result";
 
-
-// When ready to sync with backend -> axios.defaults.baseURL = "_____"; 
-
-
-function App() { 
+// When ready to sync with backend -> axios.defaults.baseURL = "_____";
+// https://codepen.io/mcanam/pen/ZEQvvmY
+// https://codepen.io/jkantner/pen/ExVWpmx
+function App() {
   return (
     <Router>
       <div className="App">
