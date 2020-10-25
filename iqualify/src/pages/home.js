@@ -14,6 +14,7 @@ export default class home extends Component {
         <div className="big-container">
           {/* <Navbar></Navbar> */}
           <div className="home-sections">
+            <h1 style={{fontFamily: "Pacifico", color:"rgb(17, 69, 255)", marginTop: "2%"}}>iQualify</h1>
             <img src={scooter} alt="oidf" class="scooter"></img>
             <div className="entry-button">
               <a href="/search" class="button instagram">

@@ -5,6 +5,7 @@
 html,
 body {
   width: 100%;
+  background-color: white !important;
   scroll-behavior: smooth;
 }
 .App {
@@ -119,7 +120,6 @@ a:hover {
 .scooter {
   width: 80vh;
   position: relative;
-  margin-top: 7.5vh;
 }
 .mail {
   width: 60vh;
@@ -232,9 +232,7 @@ a:hover {
   color: #343a40 !important;
 }
 
-body {
-  background-color: #000;
-}
+
 
 /* *,
 :after,

@@ -35,7 +35,7 @@ export default class result extends Component {
         state,
         salary,
         benefits:
-          state == "Texas"
+          state == "TX"
             ? ((salary * 40 * 13) / 25)
                 .toFixed(2)
                 .replace(/\d(?=(\d{3})+\.)/g, "$&,")
@@ -70,6 +70,11 @@ export default class result extends Component {
   }
   render() {
     const { state, salary, eligible, loading, benefits } = this.state;
+    let stateMap = new Map();
+    stateMap.set("TX","https://www.twc.texas.gov/jobseekers/unemployment-benefits-services");
+    stateMap.set("CA","https://edd.ca.gov/Unemployment/Filing_a_Claim.htm");
+    stateMap.set("NY","https://dol.ny.gov/unemployment/unemployment-insurance-assistance");
+
 
     if (!loading) {
       return (
@@ -94,7 +99,7 @@ export default class result extends Component {
               </div>
               <div class="entry-button">
                 <a
-                  href="https://www.twc.texas.gov/jobseekers/unemployment-benefits-services"
+                  href={stateMap.get(this.state.state) ? stateMap.get(this.state.state) : `https://www.careeronestop.org/LocalHelp/UnemploymentBenefits/find-unemployment-benefits.aspx?location=${this.state.state}&keyword=&persist=&ajax=0`}
                   class="button instagram"
                 >
                   <span class="gradient"></span>Find out how to receive it
