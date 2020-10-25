@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
@@ -22,29 +22,57 @@ export default class result extends Component {
       });
     }, 2000);
   }
+
+  displayConfetti() {
+    return (
+      <Fragment>
+        <div className="confetti-piece"></div>
+        <div className="confetti-piece"></div>
+        <div className="confetti-piece"></div>
+        <div className="confetti-piece"></div>
+        <div className="confetti-piece"></div>
+        <div className="confetti-piece"></div>
+        <div className="confetti-piece"></div>
+        <div className="confetti-piece"></div>
+        <div className="confetti-piece"></div>
+        <div className="confetti-piece"></div>
+        <div className="confetti-piece"></div>
+        <div className="confetti-piece"></div>
+        <div className="confetti-piece"></div>
+      </Fragment>
+    );
+  }
   render() {
     const loading = this.state.loading;
-    const amount = 0;
+    const amount = 1;
     if (!loading) {
       return (
         <div className="result-box">
           <Navbar></Navbar>
-          <div className="result-text">
-            <h1 style={amount == 0 ? { color: "red" } : {}}>$500</h1>
-          </div>
           {amount == 0 ? (
-            <div class="entry-button">
-              <span class="gradient" style={{ color: "red" }}>
-                {" "}
-                You are currently ineligible for benefits.
-              </span>
-            </div>
+            <Fragment>
+              <div className="result-text">
+                <h1 style={{ color: "red" }}>$0</h1>
+              </div>
+              <div class="entry-button">
+                <span class="gradient" style={{ color: "red" }}>
+                  {" "}
+                  You are currently ineligible for benefits.
+                </span>
+              </div>
+            </Fragment>
           ) : (
-            <div class="entry-button">
-              <a href="#" class="button instagram">
-                <span class="gradient"></span>Access Your Money
-              </a>
-            </div>
+            <Fragment>
+              <div className="result-text confetti">
+                <h1>$500</h1>
+                {this.displayConfetti()}
+              </div>
+              <div class="entry-button">
+                <a href="#" class="button instagram">
+                  <span class="gradient"></span>Access Your Money
+                </a>
+              </div>
+            </Fragment>
           )}
           {/* <div className="return-home-button">
             <Link to="/">
