@@ -5,7 +5,7 @@ export default class Navbar extends React.Component {
     return (
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav float-right">
             <li class="nav-item active">
               <a class="nav-link" href="#">
                 Home <span class="sr-only">(current)</span>
@@ -13,12 +13,7 @@ export default class Navbar extends React.Component {
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="#">
-                Home <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#">
-                Home <span class="sr-only">(current)</span>
+                About Us <span class="sr-only">(current)</span>
               </a>
             </li>
           </ul>

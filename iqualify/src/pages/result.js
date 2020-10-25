@@ -24,21 +24,28 @@ export default class result extends Component {
   }
   render() {
     const loading = this.state.loading;
+    const amount = 0;
     if (!loading) {
       return (
-        <div
-          className="result-box"
-          style={this.props.amount == 0 ? { color: "red" } : {}}
-        >
+        <div className="result-box">
           <Navbar></Navbar>
           <div className="result-text">
-            <h1>$500</h1>
+            <h1 style={amount == 0 ? { color: "red" } : {}}>$500</h1>
           </div>
-          <div class="entry-button">
-            <a href="#" class="button instagram">
-              <span class="gradient"></span>Access Your Money
-            </a>
-          </div>
+          {amount == 0 ? (
+            <div class="entry-button">
+              <span class="gradient" style={{ color: "red" }}>
+                {" "}
+                You are currently ineligible for benefits.
+              </span>
+            </div>
+          ) : (
+            <div class="entry-button">
+              <a href="#" class="button instagram">
+                <span class="gradient"></span>Access Your Money
+              </a>
+            </div>
+          )}
           {/* <div className="return-home-button">
             <Link to="/">
               <button type="button" className="btn btn-primary">
