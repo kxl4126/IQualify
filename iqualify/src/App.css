@@ -196,28 +196,35 @@ a:hover {
   border-radius: 10px;
   position: relative;
   margin: auto;
+  margin-top: 10%;
   -webkit-box-shadow: -0 10px 30px rgba(0, 0, 0, 0.2);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.data-box-left {
+.data-box-left,
+.data-box img {
   width: 60%;
-  height: 87%;
-  padding-top: 10%;
+  height: 90%;
+  padding-top: 4%;
   padding-left: 4%;
   float: left;
 }
 
 .data-box-right {
-  height: 87%;
   width: 40%;
-  padding-top: 10%;
+  height: 90%;
+  padding-top: 4%;
   padding-right: 4%;
   padding-left: 4%;
   float: right;
   text-align: left;
   font-family: Avenir;
   color: #343a40;
+}
+
+.data-box-right h3 {
+  padding-top: 5%;
+  font-weight: 100;
 }
 
 .covid-text {
