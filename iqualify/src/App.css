@@ -68,6 +68,12 @@ body {
   font-weight: 800;
 }
 
+.result-text span {
+  padding-top: 16%;
+  font-size: 2vw;
+  color: rgb(0, 126, 21);
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -318,13 +324,13 @@ p {
     transform: translateY(-5px);
   }
 }
-.form-control{
+.form-control {
   border-radius: 40px !important;
   margin-top: 5px !important;
   margin-bottom: 50px !important;
 }
 
-.btn-primary{
+.btn-primary {
   margin-bottom: 40px !important;
 }
 
