@@ -12,7 +12,7 @@ import scooter from "../assets/bank.png";
 
 export default class search extends Component {
   state = {
-    userState: "Texas",
+    userState: "AL",
     isCitizen: false,
     isUnemployed: false,
     highestSalary: 0,
