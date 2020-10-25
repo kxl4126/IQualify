@@ -1,0 +1,5 @@
+runtime: python37
+entrypoint: gunicorn -b :$PORT -b :2222 server:app
+network:
+  forwarded_ports:
+    - 2222/tcp
