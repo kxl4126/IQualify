@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
-
+import mail from "../assets/mail.png";
 export default class result extends Component {
   state = {
     loading: true,
@@ -48,7 +48,6 @@ export default class result extends Component {
     if (!loading) {
       return (
         <div className="result-box">
-          <Navbar></Navbar>
           {amount == 0 ? (
             <Fragment>
               <div className="result-text">
@@ -68,10 +67,19 @@ export default class result extends Component {
                 {this.displayConfetti()}
               </div>
               <div class="entry-button">
-                <a href="#" class="button instagram">
-                  <span class="gradient"></span>Access Your Money
+                <a
+                  href="https://www.twc.texas.gov/jobseekers/unemployment-benefits-services"
+                  class="button instagram"
+                >
+                  <span class="gradient"></span>Find out how to receive it
                 </a>
               </div>
+              <div className="covid-text">
+                You are eligible to receive up to ${amount} from governmental
+                aid. <br></br> Follow the button above to see how you can claim
+                the money.
+              </div>
+              {/* <img src={mail} alt="oidf" class="mail"></img> */}
             </Fragment>
           )}
           {/* <div className="return-home-button">
@@ -85,7 +93,7 @@ export default class result extends Component {
       );
     } else {
       return (
-        <div className="result-box">
+        <div className="loading-box">
           <div id="bg" class="light">
             <div id="gfol_wrap">
               <div class="gfol_c gfol_c1"></div>
