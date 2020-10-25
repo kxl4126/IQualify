@@ -7,10 +7,6 @@ export default class home extends Component {
     super(props);
     this.myRef = React.createRef();
   }
-  scrollToMyRef = () => {
-    console.log("FSAFSAF");
-    window.scrollTo(0, this.myRef.current.offsetTop);
-  };
   render() {
     return (
       <Fragment>
@@ -31,7 +27,6 @@ export default class home extends Component {
               href="#map"
               className="scroll-down smoothscroll"
               address="true"
-              onClick={this.scrollToMyRef}
             ></a>
           </div>
           {/* <div className="home-sections">
@@ -40,8 +35,22 @@ export default class home extends Component {
         </div> */}
         </div>
         <section id="map">
-          <div className="big-container">
-            <h1>test</h1>
+          <div className="data-container">
+            <div className="data-box">
+              <div className="data-box-left">
+                <iframe
+                  src="https://datastudio.google.com/embed/reporting/29af2348-5877-46a1-b8a9-71e8718d6de2/page/DjD"
+                  frameborder="0"
+                  style={{ border: "0", width: "100%", height: "100%" }}
+                  scrolling="no"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div className="data-box-right">
+                <h2>Header</h2>
+                <p> some words</p>
+              </div>
+            </div>
           </div>
         </section>
       </Fragment>
