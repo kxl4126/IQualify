@@ -5,20 +5,22 @@ export default class search extends Component {
   state = {
     userState: "Texas",
     isCitizen: false,
-    isActivelySearching: false,
     isUnemployed: false,
     highestSalary: 0,
   };
 
   onSubmit = () => {
-    this.props.history.push(`/result?userState=${this.state.userState}&salary=${this.state.highestSalary}`)
+    if(this.state.isCitizen == false || this.state.isUnemployed == false){
+      this.props.history.push(`/result?eligible=no`) 
+    } else {
+      this.props.history.push(`/result?eligible=yes&userState=${this.state.userState}&salary=${this.state.highestSalary}`) 
+    }
   };
 
   render() {
     const {
       userState,
       isCitizen,
-      isActivelySearching,
       isUnemployed,
       highestSalary,
     } = this.state;
@@ -76,8 +78,7 @@ export default class search extends Component {
           >
             <Form.Label>
               <h3>
-                Are you currently unemployed or working reduced worked
-                unwillingly?
+                Are you currently unemployed (unwillingly) and actively seeking work?
               </h3>
             </Form.Label>
             <Form.Control as="select">
@@ -86,20 +87,6 @@ export default class search extends Component {
             </Form.Control>
           </Form.Group>
 
-          <Form.Group
-            controlId="formBasicPassword"
-            onChange={(event) =>
-              this.setState({ isActivelySearching: event.target.value === "Yes" ? true : false })
-            }
-          >
-            <Form.Label>
-              <h2>Are you actively searching for work?</h2>
-            </Form.Label>
-            <Form.Control as="select">
-              <option>No</option>
-              <option>Yes</option>
-            </Form.Control>
-          </Form.Group>
 
           <Form.Group
             controlId="formGroupEmail"
