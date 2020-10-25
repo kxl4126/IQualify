@@ -31,14 +31,14 @@ export default class search extends Component {
   render() {
     const { userState, isCitizen, isUnemployed, highestSalary } = this.state;
     return (
+      <div style = {{marginTop:"8%"}}>
       <Container>
         <Row>
           <Col>
             <div
               style={{
-                height: "80%",
-                marginTop:"5%"
-              }}
+                height: "80%"
+                }}
             >
               <Form>
                 <Form.Group controlId="formBasicEmail">
@@ -130,7 +130,7 @@ export default class search extends Component {
                       backgroundColor: "transparent",
                       borderColor: "transparent",
                       width: "8vw",
-                      height: "3vh",
+                      height: "10vh",
                       position: "absolute",
                       outline: "none",
                     }}
@@ -142,10 +142,14 @@ export default class search extends Component {
             </div>
           </Col>
           <Col>
-            <img src={scooter} alt="oidf" class="scooter"></img>
+            <img src={scooter} alt="oidf" class="scooter" style = {{
+              width: "30vw",
+              marginTop: "22.5%"
+            }}></img>
           </Col>
         </Row>
       </Container>
+      </div>
     );
   }
 }

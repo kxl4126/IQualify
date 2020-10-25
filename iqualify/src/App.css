@@ -329,3 +329,7 @@ p {
 .btn-primary{
   margin-bottom: 40px !important;
 }
+
+.container {
+  max-width: 2100px !important;
+}
