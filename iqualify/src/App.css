@@ -265,3 +265,12 @@ p {
     transform: translateY(-5px);
   }
 }
+.form-control{
+  border-radius: 40px !important;
+  margin-top: 5px !important;
+  margin-bottom: 50px !important;
+}
+
+.btn-primary{
+  margin-bottom: 40px !important;
+}

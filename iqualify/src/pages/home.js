@@ -31,7 +31,6 @@ export default class home extends Component {
               href="#map"
               className="scroll-down smoothscroll"
               address="true"
-              onClick={this.scrollToMyRef}
             ></a>
           </div>
           {/* <div className="home-sections">
