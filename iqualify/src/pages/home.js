@@ -1,5 +1,6 @@
 import React, { Component, Fragment, useRef } from "react";
 import scooter from "../assets/scooter.png";
+import map from "../assets/map.png";
 import Navbar from "../components/navbar";
 
 export default class home extends Component {
@@ -37,9 +38,22 @@ export default class home extends Component {
         <section id="map">
           <div className="data-container">
             <div className="data-box">
+              <a href="https://datastudio.google.com/u/3/reporting/845ab9b4-8e7b-4c77-be71-bd84cef7f49c/page/rpllB">
+                <img src={map} alt="oidf" class="map"></img>
+              </a>
+              <div className="data-box-right">
+                <h1>Compensation Received per City</h1>
+                <h3>
+                  The map on the left displays the amount of money people have
+                  gained access to per city using iQualify (click on the map to
+                  get the most updated version).
+                </h3>
+              </div>
+            </div>
+            <div className="data-box">
               <div className="data-box-left">
                 <iframe
-                  src="https://datastudio.google.com/embed/reporting/29af2348-5877-46a1-b8a9-71e8718d6de2/page/DjD"
+                  src="https://datastudio.google.com/embed/u/0/reporting/5e655cc5-8c9a-4c30-8054-83e72a56488b/page/rpllB"
                   frameborder="0"
                   style={{ border: "0", width: "100%", height: "100%" }}
                   scrolling="no"
@@ -47,8 +61,47 @@ export default class home extends Component {
                 ></iframe>
               </div>
               <div className="data-box-right">
-                <h2>Header</h2>
-                <p> some words</p>
+                <h1>Eligibility Stats</h1>
+                <h3>
+                  The chart on the left displays the proportion of people that
+                  has been eligible for accessing aid through iQualify.
+                </h3>
+              </div>
+            </div>
+            <div className="data-box">
+              <div className="data-box-left">
+                <iframe
+                  src="https://datastudio.google.com/embed/u/0/reporting/aefc9f00-07f7-4fb4-8d1c-825dd146f2c4/page/rpllB"
+                  frameborder="0"
+                  style={{ border: "0", width: "100%", height: "100%" }}
+                  scrolling="no"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div className="data-box-right">
+                <h1>Compensation over Time</h1>
+                <h3>
+                  The chart on the left displays the amount of money people have
+                  gained access to over time using iQualify.
+                </h3>
+              </div>
+            </div>
+            <div className="data-box">
+              <div className="data-box-left">
+                <iframe
+                  src="https://datastudio.google.com/embed/u/0/reporting/30afec3f-4c09-4d0d-a5e2-c858853c5fd3/page/rpllB"
+                  frameborder="0"
+                  style={{ border: "0", width: "100%", height: "100%" }}
+                  scrolling="no"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div className="data-box-right">
+                <h1>Overall Stats</h1>
+                <h3>
+                  The map on the left displays the total amount of money people
+                  have gained access to using iQualify.
+                </h3>
               </div>
             </div>
           </div>
