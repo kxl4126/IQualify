@@ -30,8 +30,10 @@ POSTGRES = {
     'db': 'iqualifydb',
     'host': '34.94.47.65',
     'port': '5432',
-    'sslmode': 'require'
-
+    'sslmode': 'require',
+    'ssl_ca': 'cloudsql/server-ca.pem',
+    'ssl_cert': 'cloudsql/client-cert.pem',
+    'ssl_key': 'cloudsql/client-key.pem'
 }
 
 try:
@@ -40,7 +42,10 @@ try:
                                   host = POSTGRES["host"],
                                   port = POSTGRES["port"],
                                   database = POSTGRES["db"],
-                                  sslmode = POSTGRES["sslmode"])
+                                  sslmode = POSTGRES["sslmode"],
+                                  sslrootcert = POSTGRES["ssl_ca"],
+                                  sslcert = POSTGRES["ssl_cert"],
+                                  sslkey = POSTGRES["ssl_key"])
     cursor = connection.cursor()
 except (Exception, psycopg2.Error) as error :
     raise Exception("Error connecting to postgreSQL.")
@@ -66,7 +71,7 @@ def main():
     if request.method == "POST":
         status = args["status"]
         state = args["state"]
-        if args["compensation"] != None and (isinstance(float, args["compensation"]) or args["compensation"].isnumeric()):
+        if args["compensation"] != None and (isinstance(args["compensation"], float) or args["compensation"].isnumeric()):
             compensation = float(args["compensation"])
             if status in ["eligible", "not citizen", "employed", "other"]:
                 cursor.execute(f'''INSERT INTO compensation (ip, status, lat, lon, zip, city, state, country, compensation) VALUES
@@ -93,6 +98,7 @@ def geoip(ip=None):
 
     if ip == None:
         ip = request.remote_addr
+
     if valid_ip.match(ip):
         geo_data = requests.get("http://api.ipinfodb.com/v3/ip-city/", params={
             "key": geoip_key,
