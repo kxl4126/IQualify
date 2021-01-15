@@ -1,0 +1,12 @@
+                                                List of databases
+     Name      |       Owner       | Encoding |  Collate   |   Ctype    |            Access privileges            
+---------------+-------------------+----------+------------+------------+-----------------------------------------
+ cloudsqladmin | cloudsqladmin     | UTF8     | en_US.UTF8 | en_US.UTF8 | 
+ iqualifydb    | postgres          | UTF8     | en_US.UTF8 | en_US.UTF8 | 
+ postgres      | cloudsqlsuperuser | UTF8     | en_US.UTF8 | en_US.UTF8 | 
+ template0     | cloudsqladmin     | UTF8     | en_US.UTF8 | en_US.UTF8 | =c/cloudsqladmin                       +
+               |                   |          |            |            | cloudsqladmin=CTc/cloudsqladmin
+ template1     | cloudsqlsuperuser | UTF8     | en_US.UTF8 | en_US.UTF8 | =c/cloudsqlsuperuser                   +
+               |                   |          |            |            | cloudsqlsuperuser=CTc/cloudsqlsuperuser
+(5 rows)
+

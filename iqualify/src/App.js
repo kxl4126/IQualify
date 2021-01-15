@@ -9,8 +9,9 @@ import axios from "axios";
 import home from "./pages/home";
 import search from "./pages/search";
 import result from "./pages/result";
+import analytics from "./pages/analytics";
 
-// When ready to sync with backend -> axios.defaults.baseURL = "_____";
+axios.defaults.baseURL = "localhost:5000";
 // https://codepen.io/mcanam/pen/ZEQvvmY
 // https://codepen.io/jkantner/pen/ExVWpmx
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/" component={home} />
           <Route exact path="/search" component={search} />
           <Route exact path="/result" component={result} />
+          <Route exact path="/analytics" component={analytics} />
         </Switch>
       </div>
     </Router>

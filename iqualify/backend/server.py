@@ -1,29 +1,46 @@
 from flask import Flask
 from flask import request
 from flask import jsonify
+from flask_cors import CORS
 import requests
 import re
 import psycopg2
-import signal
 
 app = Flask(__name__)
+CORS(app)
 
 # Database
+
+# Cockroach DB
+'''
 POSTGRES = {
     'user': 'iqualify-user',
     'pw': 'Nu-uj0kMvIabyHz',
     'db': 'iqualifydb',
     'host': 'iqualify-sql-main-5ww.gcp-us-west2.cockroachlabs.cloud',
     'port': '26257',
+    'sslmode': 'disable'
+}
+'''
+
+# Cloud SQL
+POSTGRES = {
+    'user': 'iqualify-user',
+    'pw': 'Nu-uj0kMvIabyHz',
+    'db': 'iqualifydb',
+    'host': '34.94.47.65',
+    'port': '5432',
+    'sslmode': 'require'
+
 }
 
-db_uri = 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
 try:
     connection = psycopg2.connect(user = POSTGRES["user"],
                                   password = POSTGRES["pw"],
                                   host = POSTGRES["host"],
                                   port = POSTGRES["port"],
-                                  database = POSTGRES["db"])
+                                  database = POSTGRES["db"],
+                                  sslmode = POSTGRES["sslmode"])
     cursor = connection.cursor()
 except (Exception, psycopg2.Error) as error :
     raise Exception("Error connecting to postgreSQL.")
@@ -37,6 +54,7 @@ valid_ip = re.compile('''^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(
 
 @app.route("/", methods=["POST"])
 def main():
+    args = request.get_json()
     resp = geoip()
     ip = resp["ip"]
     userZip = resp["zip"]
@@ -46,10 +64,10 @@ def main():
     lon = resp["longitude"]
     compensation = None
     if request.method == "POST":
-        status = request.args.get("status")
-        state = request.args.get("state")
-        if request.args.get("compensation") != None and request.args.get("compensation").isnumeric():
-            compensation = float(request.args.get("compensation"))
+        status = args["status"]
+        state = args["state"]
+        if args["compensation"] != None and (isinstance(float, args["compensation"]) or args["compensation"].isnumeric()):
+            compensation = float(args["compensation"])
             if status in ["eligible", "not citizen", "employed", "other"]:
                 cursor.execute(f'''INSERT INTO compensation (ip, status, lat, lon, zip, city, state, country, compensation) VALUES
                                                         ('{ip}', '{status}', '{lat}', '{lon}', '{userZip}', '{city}', '{state}', '{country}', {compensation})''')
